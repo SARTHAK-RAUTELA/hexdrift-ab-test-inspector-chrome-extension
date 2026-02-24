@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HexDrift_Testing</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -23,6 +24,83 @@
         </div>
     </div>
 
+    <div class="search-bar" id="searchBar">
+        <input class="search-input" id="searchInput" placeholder="Filter experiments by name or ID...">
+    </div>
+
+    <div class="tabs" id="tabsRow">
+        <div class="tab active" data-tab="experiments">🧪 Experiments</div>
+        <div class="tab" data-tab="goals">🎯 Goals <span class="badge" id="goalsCount">0</span></div>
+        <div class="tab" data-tab="events">📡 Events <span class="badge" id="eventsCount">0</span></div>
+        <div class="tab" data-tab="flicker">⚡ Flicker <span class="badge" id="flickerCount">0</span></div>
+        <div class="tab" data-tab="performance">🏎 Perf</div>
+        <div class="tab" data-tab="cookies">🍪 Cookies <span class="badge" id="cookiesCount">0</span></div>
+        <div class="tab" data-tab="history">📜 History</div>
+        <div class="tab" data-tab="seo">📈 SEO</div>
+        <div class="tab" data-tab="a11y">♿ A11y</div>
+    </div>
+
+    <div class="content">
+        <div id="loadingState" class="loading">
+            <div class="spinner"></div>
+            <div>Analysing page...</div>
+        </div>
+
+        <div id="mainContent" style="display: block;">
+            <div class="tab-panel active" id="panel-experiments">
+                <div class="platform-row" id="platformRow"></div>
+                <div id="experimentsContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-goals">
+                <div id="goalsContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-events">
+                <div style="display:flex;gap:6px;margin-bottom:8px;align-items:center">
+                    <span style="font-size:10px;color:var(--muted)">Auto-refresh:</span>
+                    <button class="icon-btn" id="eventsRefresh">↻ Refresh</button>
+                    <button class="icon-btn" id="clearEvents" style="margin-left:auto">Clear</button>
+                </div>
+                <div id="eventsContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-flicker">
+                <div id="flickerContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-performance">
+                <div id="psiSection" class="card" style="margin-bottom:7px">
+                    <div class="card-hdr">
+                        <div class="card-title">📊 PageSpeed Insights API</div>
+                    </div>
+                    <input class="psi-input" id="psiKey" placeholder="Paste your Google PSI API key..." />
+                    <div class="psi-row">
+                        <select class="psi-input" id="psiStrategy" style="width:auto;flex-shrink:0">
+                            <option value="mobile">Mobile</option>
+                            <option value="desktop">Desktop</option>
+                        </select>
+                        <button class="icon-btn primary" id="runPSI" style="flex:1">Run Lighthouse Audit</button>
+                    </div>
+                    <div id="psiResult"></div>
+                </div>
+                <div id="performanceContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-cookies">
+                <div id="cookiesContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-history">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:6px">
+                    <button class="icon-btn" id="clearHistory">🗑 Clear History</button>
+                </div>
+                <div id="historyContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-seo">
+                <div id="seoContent"></div>
+            </div>
+            <div class="tab-panel" id="panel-a11y">
+                <div id="a11yContent"></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="popup.js"></script>
 </body>
 
 </html>
